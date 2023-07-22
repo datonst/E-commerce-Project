@@ -9,8 +9,5 @@ public class MainController {
      public String viewHomePage(){
         return "index";
     }
-    @GetMapping("/users")
-    public String listAll(){
-        return "users";
-    }
+
 }
