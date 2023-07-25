@@ -67,7 +67,35 @@
     <div>
         <h1> Manage Users</h1>
     </div>
-    <div>Shopme Control Pannel - Copyright &copy; Shopme</div>
+    <div>
+        <table class="table table-bordered table-striped table-hover table-responsive-xl">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">User ID</th>
+                    <th>Photos</th>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Roles</th>
+                    <Th>Enabled</Th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user: ${listUsers}">
+                <td>[[${user.id}]]</td>
+                <td></td>
+                <td>[[${user.email}]]</td>
+                <td>[[${user.firstName}]]</td>
+                <td>[[${user.lastName}]]</td>
+                <td>[[${user.roles}]]</td>
+                <td>[[${user.enabled}]]</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-centre">
+        <p>Shopme Control Pannel - Copyright &copy; Shopme</p> </div>
+
 </div>
 
 </body>
