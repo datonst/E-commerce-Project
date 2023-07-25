@@ -22,11 +22,12 @@ public class User {
     @Column(length=64)
     private String photos;
     private boolean enabled;
+
     @ManyToMany
     @JoinTable(
             name="users_roles",
-            joinColumns = @JoinColumn(name = "users_id"),
-            inverseJoinColumns=@JoinColumn(name="roles_id")
+            joinColumns = {@JoinColumn(name = "users_id")},
+            inverseJoinColumns={@JoinColumn(name="roles_id")}
     )
     private Set<Role> roles=new HashSet<>();
 
@@ -88,6 +89,17 @@ public class User {
 
     public Set<Role> getRoles() {
         return roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 
     public void setRoles(Set<Role> roles) {
