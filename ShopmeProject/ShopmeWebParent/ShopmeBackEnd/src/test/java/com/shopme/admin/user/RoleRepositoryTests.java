@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.Rollback;
 
 import java.util.List;
@@ -17,11 +16,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Rollback(false)
 public class RoleRepositoryTests {
     @Autowired
-    private RoleRepository repo;
+    private RoleRepository roleRepo;
     @Test
     public void testCreateFirst(){
         Role roleAdmin=new Role("Admin","manage everything");
-        Role saveRole=repo.save(roleAdmin);
+        Role saveRole= roleRepo.save(roleAdmin);
         assertThat(saveRole.getId()).isGreaterThan(0);
     }
     @Test
@@ -30,12 +29,12 @@ public class RoleRepositoryTests {
         Role roleSipper=new Role("Shipper","viewproducts,view orders "+"and update order status");
         Role roleEditor=new Role("Editor","manage categories,brands "+"products, articles and menus");
         Role roleAssistant= new Role("Assistant","manage questions and reviews");
-        repo.saveAll(List.of(roleSalesperson,roleSipper,roleEditor,roleAssistant));
+        roleRepo.saveAll(List.of(roleSalesperson,roleSipper,roleEditor,roleAssistant));
     }
 
     @Test
     public void testDeleteUser(){
-        repo.deleteAll();
+        roleRepo.deleteAll();
     }
 
 }
